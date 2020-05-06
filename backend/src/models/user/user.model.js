@@ -29,12 +29,10 @@ class UserModel extends baseModel {
     this.role = { value: args.role || UserModel.roles.business, type: dependencies.dal.types.string }
     this.last_login = { value: args.last_login, type: dependencies.dal.types.string }
     this.last_time_on_app = { value: args.last_time_on_app, type: dependencies.dal.types.string }
-    this.is_vca_completed = { value: args.is_vca_completed, type: dependencies.dal.types.boolean }
-    this.vca_account = { value: args.vca_account, type: dependencies.dal.types.string }
     this.link_email_activation = { value: args.link_email_activation, type: dependencies.dal.types.string }
     this.accept_terms = { value: args.accept_terms, type: dependencies.dal.types.boolean }
     this.is_account_actived = { value: args.is_account_actived, type: dependencies.dal.types.boolean }
-    this.business_id = { value: args.business_id, type: dependencies.dal.types.string }
+    this.credit_id = { value: args.credit_id, type: dependencies.dal.types.string }
   }
 
   // Return entity sanitized
@@ -49,11 +47,9 @@ class UserModel extends baseModel {
       lastname: this.lastname.value || this.lastname.type.default,
       role: this.role.value || this.role.type.default,
       is_account_actived: this.is_account_actived.value || this.is_account_actived.type.default,
-      is_vca_completed: this.is_vca_completed.value || this.is_vca_completed.type.default,
-      vca_account: this.vca_account.value || this.vca_account.type.default,
       link_email_activation: this.link_email_activation.value || this.link_email_activation.type.default,
       accept_terms: this.accept_terms.value || this.accept_terms.type.default,
-      business_id: this.business_id.value || this.business_id.type.default
+      credit_id: this.credit_id || this.credit_id.type.default
     }
   }
 
@@ -71,12 +67,10 @@ class UserModel extends baseModel {
       lastname: this.lastname.value || this.lastname.type.default,
       role: this.role.value || this.role.type.default,
       is_account_actived: this.is_account_actived.value || this.is_account_actived.type.default,
-      is_vca_completed: this.is_vca_completed.value || this.is_vca_completed.type.default,
-      vca_account: this.vca_account.value || this.vca_account.type.default,
       link_email_activation: this.link_email_activation.value || this.link_email_activation.type.default,
       accept_terms: this.accept_terms.value || this.accept_terms.type.default,
       password: this.password.value || this.password.type.default,
-      business_id: this.business_id.value || this.business_id.type.default
+      credit_id: this.credit_id || this.credit_id.type.default
     }
   }
 }

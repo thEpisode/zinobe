@@ -1,3 +1,3 @@
 module.exports.Notification = require('./notification/notification.model')
 module.exports.User = require('./user/user.model')
-// FIXME: Include all models here
+module.exports.Credit = require('./credit/credit.model')
