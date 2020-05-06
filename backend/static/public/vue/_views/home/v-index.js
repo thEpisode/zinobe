@@ -39,7 +39,7 @@ window.app = new Vue({
   },
   methods: {
     async initializeView () {
-      await this.getUser()
+      // await this.getUser()
       // this.getAllNotifications()
 
       this.hideLoader() // <--- FIXME: Change this in place you need
