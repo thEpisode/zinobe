@@ -33,6 +33,7 @@ class UserModel extends baseModel {
     this.accept_terms = { value: args.accept_terms, type: dependencies.dal.types.boolean }
     this.is_account_actived = { value: args.is_account_actived, type: dependencies.dal.types.boolean }
     this.credit_id = { value: args.credit_id, type: dependencies.dal.types.string }
+    this.credit_line_status = { value: args.role || UserModel.creditLineStatuses.rejected, type: dependencies.dal.types.string }
   }
 
   // Return entity sanitized
@@ -73,6 +74,11 @@ class UserModel extends baseModel {
       credit_id: this.credit_id || this.credit_id.type.default
     }
   }
+}
+
+UserModel.creditLineStatuses = {
+  approved: { id: 1, name: 'approved', title: 'Aprobado' },
+  rejected: { id: 2, name: 'rejected', title: 'Rechazado' }
 }
 
 UserModel.statuses = {

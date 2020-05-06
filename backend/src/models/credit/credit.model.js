@@ -55,12 +55,6 @@ class CreditModel extends baseModel {
   }
 }
 
-CreditModel.debtStatuses = {
-  approved: { id: 1, name: 'approved', title: 'Aprobado' },
-  rejected: { id: 2, name: 'rejected', title: 'Rechazado' },
-  processing: { id: 3, name: 'processing', title: 'En estudio' }
-}
-
 CreditModel.statuses = {
   inactive: { id: 1, name: 'inactive', title: 'Inactivo' },
   active: { id: 2, name: 'active', title: 'Activo' },
