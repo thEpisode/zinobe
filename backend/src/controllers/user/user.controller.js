@@ -155,26 +155,6 @@ function userController (dependencies) {
     }
   }
 
-  const getAllByBusinessId = async (data) => {
-    try {
-      if (!data || !data.businessId) {
-        return _utilities.response.error('Please provide a business_id')
-      }
-
-      // Get values from reference as snapshot
-      const docRef = _db.collection('users')
-        .where('business_id', '==', `${data.businessId}`)
-      const docRaw = await docRef.get()
-      // Cast Firebase object into an arry of users
-      const entityResponse = _firebase.cast.array(docRaw)
-
-      return _utilities.response.success(entityResponse.data)
-    } catch (error) {
-      _console.error(error)
-      return _utilities.response.error()
-    }
-  }
-
   const create = async (data) => {
     try {
       if (!data || !data.email) {
@@ -257,11 +237,11 @@ function userController (dependencies) {
     getByEmail,
     getByPhone,
     getByIdentity,
-    getAllByBusinessId,
     create,
     update,
     status: _models.User.statuses,
-    role: _models.User.roles
+    role: _models.User.roles,
+    creditLineStatuses: _models.User.creditLineStatuses
   }
 }
 
