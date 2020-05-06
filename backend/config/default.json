@@ -1,0 +1,115 @@
+{
+  "JWT_SECRET": "NodeJSIsCool",
+  "SERVER_PORT": "3500",
+  "SERVER_VERSION": "4.0.0",
+  "SERVER_NAME": "backend server #1",
+  "BACKEND_SECRET": "zih9cVFnC0J0otOAFXrj",
+  "FRONTEND_URI": "http://localhost:3500",
+  "TOKEN_EXPIRE": 24,
+  "USE_DATABASE": true,
+  "USE_STORAGE": false,
+  "DATABASE_NAME": "firebase",
+  "STORAGE_NAME": "spaces",
+  "GEOIP_DATABASE": {
+    "PATH": "/databases/GeoLite2-City.mmdb"
+  },
+  "FIREBASE_ADMIN": {
+    "type": "service_account",
+    "project_id": "zinobe-test",
+    "private_key_id": "2227d6b0c3135ac4abe93d96877412b468d8d1b4",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCfu7blJMqeC1j/\n9+wSJ1EPzg52++xxZEBEVo7wL4BycGvSHE1ZdKbFsVuksuRJp5kCdSjPWq5Be2z4\nlxL/FU7xaAeh4B2hcO0YjiZHQd2Dd44VrAWpO5yT4+O3szBDWG61U2q4TFhwms6W\nkukna4ROzMeLZyGPr65cJIJFvKCR61A8TbfLsTChe0qTnG7yokLSE5qEMLqZ20Th\n7Gg7c8fUM5sv7wYm8mCMCW2biAImWQd5VYPiGrbam7cXz/C0vw99GVKWMtRh5DkP\ntDSdmV/y/lI+gtbIVLB/8PV4lWeF+A0iosOesRoujWdtiP+tYv00Yv0UwoMfNa8N\nfU2pc8SFAgMBAAECggEAEXh2iJl9j8ut8FEtgM7MDu56pojnU3+jh9XvzFVltx6U\nrGZsD1yy4OyFGX53eZbbJWmrDQLeDEtzn7zmVv/9omm+a/YXR5ESXZ0ukpyhnb91\nyukFtXzPo11Jis4OeU8yzKJTCdVP1wEXl2B6H9WiovvC13xwL0cHywwzM21uIodt\n5qK6d2CAxIDEwtSOo9XNy3xrZ+yGQpO+h24ZcGQhJZhu5UNhoAckD3qeMyYr8nCt\ngep5mYL4uQomDikarSIitU3dhTyQ1ZjrToNAmHXFl1psjG1App96ZFV+qIlMopcg\nVYZljCAIEInFb62krZMPU6EwzrxTyf95OE6Wu77QAQKBgQDZDIVEw8UA/Q5Y2iha\n2QElde/c2M3/sw8NFeCQ+qWfRvxwBeJP71sYg72vQP6px87CYrU7/gTTrHw84K9y\nKzDDPEs9NruAR+QFSttwuhd2dtS1AVdrRs0fr2RESBhLu+3tDXSlau6vYa3Ixuqc\n9wPIfodvtTLUS5eucfvv5drNxwKBgQC8ZgvWq4flLYN4c/pPzOYzBzQQ8WNdynC/\n+CqqvFIafXHdiEEJhiKQXg6vATzOWPJFkTK6CMeFm7wUxpXkmatyRe1pQxscmIJ0\npXg5wZDWuwTnR609FPQZ0kSV1MajXVVzDzm4+CGyNWEe4oI64hh1nUSJYDwqB4As\nVF6LG/iLUwKBgQCE0LOQI5eehjtMRZqiFN4ttSBk7MoJaOGR6Uw0ixvj/kUkq4UT\n0uzUcHEXF9d9vwWXT12Fa2g6uvZ/LiJN434AShnkSGSuF8/BKVBkh4sp84cvh7Wd\nsIJ+nA3n9pHfbg0mnLA/NNL/wO7dyFLyX/kRq9NmmOOUovkbRyaaYvXkKwKBgFNc\n+CoSFnzDKeR3tS/wY3/61QAWP7i1pjRblE2eLNpJ3cN/0f9r2gl1hRvM+WH5G6LK\nv95vmhG1uoCa6qKPmLxk0st8BRgfJ8KDoXI1A2jwshfAsJhRmD2AvBZsY0TQPMo/\n13PQX+CiHAp1gdiaSOZqI3SCH70dOori/j6hrtW/AoGAP3g3QNBrNzlYpJS3B84R\nZmB+DGCL+Q2EqjROMwjzc7rZZSmRMMglfpo0ysrcpqUz7T+9KpF2ZKw35pjHZ7Vv\nmK6g3MYsoMCnu/HmHMoG7TAHl6h4MbvmR1rgYUunTcS3BDA7OEjzK+bcN9gkgexG\n4683sWtkdQ0cmB6RD3bzGoA=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-61soo@zinobe-test.iam.gserviceaccount.com",
+    "client_id": "106819801176869339867",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-61soo%40zinobe-test.iam.gserviceaccount.com"
+  },
+  "FIREBASE": {
+    "apiKey": "AIzaSyDLEJZm6hI6wp7yNvy4zbm9xpI5ibUS8zE",
+    "authDomain": "zinobe-test.firebaseapp.com",
+    "databaseURL": "https://zinobe-test.firebaseio.com",
+    "projectId": "zinobe-test",
+    "storageBucket": "zinobe-test.appspot.com",
+    "messagingSenderId": "190693872776",
+    "appId": "1:190693872776:web:eaf7db1e33dea309e6bb3d",
+    "measurementId": "G-MP3WFHYPCP"
+  },
+  "POSTGRESQL": {
+    "user": "user",
+    "host": "127.0.0.1",
+    "database": "databasename",
+    "password": "pass",
+    "port": 5432,
+    "default_namespace": "chatbotsdb_test2"
+  },
+  "MAIL": {
+    "VALIDATION_PATH": "/validate-email",
+    "FROM": "\"Beat\" support@virtualcapitalofamerica.com",
+    "USER": "xxxx@virtualcapitalofamerica.com",
+    "PASSWORD": "xxxxx",
+    "SECURE": true,
+    "HOST": "smtp.gmail.com",
+    "PORT": 465
+  },
+  "DIGITALOCEAN": {
+    "SPACES": {
+      "accessKeyId": "YOUR_ACCESS_KEY_ID",
+      "secretAccessKey": "YOUR_SECRET_ACCESS_KEY",
+      "endpoint": "xxxx.digitaloceanspaces.com",
+      "bucket": "xxxx"
+    }
+  },
+  "CUSTOM_DEPENDENCIES": [
+    {
+      "name": "socketClient",
+      "package": "socket.io-client"
+    }
+  ],
+  "CUSTOM_STATIC_ROUTES": [
+    {
+      "route": "/jquery",
+      "path": "/node_modules/jquery/dist/"
+    },
+    {
+      "route": "/bootstrap",
+      "path": "/node_modules/bootstrap/dist/"
+    },
+    {
+      "route": "/fontawesome",
+      "path": "/node_modules/@fortawesome/fontawesome-free-webfonts/"
+    },
+    {
+      "route": "/material-design-font",
+      "path": "/node_modules/@mdi/font/"
+    },
+    {
+      "route": "/popperjs",
+      "path": "/node_modules/popper.js/dist/"
+    },
+    {
+      "route": "/sweetalert2",
+      "path": "/node_modules/sweetalert2/dist/"
+    },
+    {
+      "route": "/select2",
+      "path": "/node_modules/select2/dist/"
+    },
+    {
+      "route": "/select2-bootstrap-theme",
+      "path": "/node_modules/select2-bootstrap-theme/dist/"
+    },
+    {
+      "route": "/vue",
+      "path": "/node_modules/vue/dist"
+    },
+    {
+      "route": "/vue-resource",
+      "path": "/node_modules/vue-resource/dist"
+    },
+    {
+      "route": "/vue-cookies",
+      "path": "/node_modules/vue-cookies/"
+    }
+  ]
+}
