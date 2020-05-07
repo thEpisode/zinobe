@@ -1,7 +1,37 @@
 import React from 'react';
+import { useForm } from 'react-hook-form'
+import { useHistory } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 export function Login () {
+  const cookies = new Cookies();
+  const { register, handleSubmit } = useForm();
+  const history = useHistory();
   const date = new Date();
+
+  const loginOnClick = (data) => {
+    const url = 'http://localhost:3500/api/login';
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => {
+        if (!response || !response.success || response.result.auth !== true) {
+          alert(response.message)
+          return
+        }
+debugger
+        cookies.set('user_session', response.result.token, { expires: new Date(response.result.payload.session_time), path: '/' });
+        cookies.set('user_identity', response.result.payload.identity, { expires: new Date(response.result.payload.session_time), path: '/' });
+
+        history.push('/request-credit');
+      });
+  }
 
   return (
 
@@ -15,7 +45,7 @@ export function Login () {
               </div>
               <h4>Bienvenido!</h4>
               <h6 className="font-weight-light">Nos alegra tenerte de vuelta!</h6>
-              <form className="pt-3">
+              <form className="pt-3" onSubmit={handleSubmit(loginOnClick)}>
 
                 <div className="form-group">
                   <label htmlFor="input-username">Usuario</label>
@@ -25,9 +55,8 @@ export function Login () {
                         <i className="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input className="form-control border-left-0" type="text" id="input-username" required
-                      /* v-model="vueBind.model.identity" */
-                      /* {...{ 'v-on:keyup.enter': 'loginOnClick($event)' }} */
+                    <input className="form-control border-left-0" type="text" id="input-username" name="identity" required
+                      ref={register}
                       placeholder="Teléfono, DNI o email" />
                   </div>
                 </div>
@@ -40,9 +69,8 @@ export function Login () {
                         <i className="mdi mdi-lock-outline text-primary"></i>
                       </span>
                     </div>
-                    <input id="input-password" type="password" className="form-control border-left-0"
-                      /* v-model="vueBind.model.password" */
-                      /* {...{ 'v-on:keyup.enter': 'loginOnClick($event)' }} */
+                    <input id="input-password" type="password" className="form-control border-left-0" name="password" required
+                      ref={register}
                       placeholder="Tu contraseña" />
                   </div>
                 </div>
@@ -59,8 +87,9 @@ export function Login () {
                   </div>
                 </div>
                 <div className="my-3">
-                  <button type="button" className="btn btn-block btn-primary font-weight-medium auth-form-btn text-uppercase"
-                /* {...{ 'v-on:click': 'loginOnClick($event)' }} */>Login</button>
+                  <button className="btn btn-block btn-primary font-weight-medium auth-form-btn text-uppercase">
+                    Ingresar
+                  </button>
                 </div>
 
                 <div className="text-center mt-4 font-weight-light">

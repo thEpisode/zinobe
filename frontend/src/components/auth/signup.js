@@ -17,15 +17,15 @@ export function Signup () {
       }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
-      .then(data => {
-        if (!data || !data.success) {
-          alert(data.message)
+      .then(response => {
+        if (!response || !response.success) {
+          alert(response.message)
           return
         }
 
-        if (data.result && data.result.credit_line_status.name === 'approved') {
+        if (response.result && response.result.credit_line_status.name === 'approved') {
           alert('Felicitaciones!, has sido registrado exitosamente y puedes pedir créditos')
-        } else if (data.result && data.result.credit_line_status.name === 'rejected') {
+        } else if (response.result && response.result.credit_line_status.name === 'rejected') {
           alert('Has sido registrado exitosamente pero NO puedes pedir créditos, sorry :(')
         }
 
@@ -47,14 +47,12 @@ export function Signup () {
                 <div className="form-group col-12 col-lg-6 mb-2">
                   <label htmlFor="firstname">Primer nombre</label>
                   <input type="text" className="form-control" id="firstname" name="firstname" required
-
                     ref={register}
                     placeholder="Ingresa un nombre" />
                 </div>
                 <div className="form-group col-12 col-lg-6 mb-2">
                   <label htmlFor="lastname">Apellido</label>
                   <input type="text" className="form-control" id="lastname" name="lastname" required
-
                     ref={register}
                     placeholder="Ingresa un apellido" />
                 </div>
@@ -63,14 +61,12 @@ export function Signup () {
                 <div className="form-group col-12 mb-2 col-md-6">
                   <label htmlFor="phone">Teléfono</label>
                   <input type="tel" className="form-control" id="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phone" required
-
                     ref={register}
                     placeholder="Ingresa tu número telefónico" />
                 </div>
                 <div className="form-group col-12 mb-2 col-md-6">
                   <label htmlFor="phone">Cédula</label>
                   <input type="number" className="form-control" id="dni" name="dni" required
-
                     ref={register}
                     placeholder="Ingresa tu número de cédula" />
                 </div>
@@ -79,7 +75,6 @@ export function Signup () {
                 <div className="form-group col-12 mb-2">
                   <label htmlFor="email">Email</label>
                   <input type="email" className="form-control" id="email" name="email" name="email" required
-
                     ref={register}
                     placeholder="Introduce una dirección de correo electrónico" />
                 </div>
@@ -88,7 +83,6 @@ export function Signup () {
                 <div className="form-group col-12 mb-2">
                   <label htmlFor="password">Contraseña</label>
                   <input type="password" className="form-control" id="password" name="password" name="password" required
-
                     ref={register}
                     placeholder="Introduce una contraseña" />
                 </div>
@@ -98,7 +92,6 @@ export function Signup () {
                   <div className="form-check">
                     <label className="form-check-label text-muted">
                       <input type="checkbox" className="form-check-input" name="accept_terms" required
-
                         ref={register} />
                       Acepto todos los términos y condiciones
                     </label>
