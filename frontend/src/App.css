@@ -3,7 +3,11 @@
 }
 
 /* General styles */
- 
+
+.btn{
+  border-radius: 0!important;
+}
+
 .btn-primary {
   color: #fff;
   background-color: var(--custom-primary)!important;
@@ -42,4 +46,8 @@
 
 .info-container{
   padding-top: 3.5rem!important
+}
+
+.bg-dark {
+  background-color: #183149!important;
 }

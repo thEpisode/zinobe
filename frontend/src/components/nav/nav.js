@@ -19,7 +19,7 @@ export function Nav () {
             <Link to="/denied-credits" className="nav-link">Créditos negados</Link>
           </li>
           <li className="nav-item">
-            <Link to="/users" className="nav-link">Users</Link>
+            <Link to="/users" className="nav-link">Usuarios</Link>
           </li>
         </ul>
         <ul className="navbar-nav">
@@ -27,7 +27,7 @@ export function Nav () {
             <Link to="/Login" className="nav-link">Ingresar</Link>
           </li>
           <li className="nav-item">
-            <Link to="/signup" className="btn btn-primary">Empezar</Link>
+            <Link to="/signup" className="ml-2 btn btn-primary">Empezar</Link>
           </li>
         </ul>
       </div>
