@@ -116,8 +116,10 @@ const ConfirmButton = (props) => {
   return (
     <div className="col-12 text-center py-4 mt-4">
       <button className="btn btn-lg btn-primary mr-2"
-        onClick={() =>
+        onClick={(e) => {
           console.log('Cliiick')
+          e.preventDefault()
+        }
         }>Solicitar crédito</button>
     </div>
   )
@@ -130,6 +132,7 @@ const CreditInput = (props) => {
   const [incrementAmount, setIncrementAmount] = useState(standardValue);
 
   useEffect(() => {
+    dispatch(incrementByAmount(Number(standardValue) || 0))
     const softSlider = document.querySelector('#credit-slider')
     const settings = {
       start: [standardValue],
