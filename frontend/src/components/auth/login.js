@@ -25,7 +25,7 @@ export function Login () {
           alert(response.message)
           return
         }
-debugger
+
         cookies.set('user_session', response.result.token, { expires: new Date(response.result.payload.session_time), path: '/' });
         cookies.set('user_identity', response.result.payload.identity, { expires: new Date(response.result.payload.session_time), path: '/' });
 
