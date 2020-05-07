@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  decrement,
-  increment,
   incrementByAmount,
-  incrementAsync,
   selectCount,
 } from './../../features/credit/counterSlice';
 import noUiSlider from 'nouislider/distribute/nouislider.min.js';
