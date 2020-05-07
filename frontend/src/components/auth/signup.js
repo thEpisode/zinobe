@@ -1,8 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form'
+import { useHistory } from "react-router-dom";
 
 export function Signup () {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   const createUserOnClick = (data) => {
     const url = 'http://localhost:3500/api/user';
@@ -23,9 +25,11 @@ export function Signup () {
 
         if (data.result && data.result.credit_line_status.name === 'approved') {
           alert('Felicitaciones!, has sido registrado exitosamente y puedes pedir créditos')
-        }else if (data.result && data.result.credit_line_status.name === 'rejected'){
+        } else if (data.result && data.result.credit_line_status.name === 'rejected') {
           alert('Has sido registrado exitosamente pero NO puedes pedir créditos, sorry :(')
         }
+
+        history.push('/login');
       });
   }
   return (
