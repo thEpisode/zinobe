@@ -3,7 +3,7 @@ import {
   Link
 } from "react-router-dom";
 
-export function Nav() {
+export function Nav () {
   return (
     <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <Link to="/" className="navbar-brand">Zinobe</Link>
@@ -13,10 +13,21 @@ export function Nav() {
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to="/my-credits" className="nav-link">Mis creditos</Link>
+            <Link to="/my-credits" className="nav-link">Mis créditos</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/denied-credits" className="nav-link">Créditos negados</Link>
           </li>
           <li className="nav-item">
             <Link to="/users" className="nav-link">Users</Link>
+          </li>
+        </ul>
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link to="/Login" className="nav-link">Ingresar</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/signup" className="btn btn-primary">Empezar</Link>
           </li>
         </ul>
       </div>

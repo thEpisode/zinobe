@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react';;
 
-export function MyCredits () {
+export function DeniedCredits () {
   return (
     <div className="info-container container">
       <div className="mt-5">
-        <h2>My credits</h2>
+        <h2>Denied credits</h2>
       </div>
     </div>
   );
