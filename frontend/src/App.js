@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Credit } from './features/credit/Credit';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -21,10 +21,10 @@ function App() {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/" className="nav-link">Inicio</Link>
               </li>
               <li className="nav-item">
-                <Link to="/about" className="nav-link">About</Link>
+                <Link to="/my-credits" className="nav-link">Mis creditos</Link>
               </li>
               <li className="nav-item">
                 <Link to="/users" className="nav-link">Users</Link>
@@ -37,7 +37,7 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
+          <Route path="/my-credits">
             <About />
           </Route>
           <Route path="/users">
@@ -54,24 +54,29 @@ function App() {
 }
 
 function Home() {
-  return <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <Counter />
-    </header>
-  </div>;
+  return (
+    <div className="container">
+      <div className="mt-5 pt-5">
+        <Credit />
+      </div>
+    </div>
+  );
 }
 
 function About() {
-  return <div className="mt-5 pt-5">
-    <h2>About</h2>
-  </div>;
+  return (
+    <div className="mt-5 pt-5">
+      <h2>About</h2>
+    </div>
+  );
 }
 
 function Users() {
-  return <div className="mt-5 pt-5">
-    <h2>Users</h2>
-  </div>;
+  return (
+    <div className="mt-5 pt-5">
+      <h2>Users</h2>
+    </div>
+  );
 }
 
 export default App;
