@@ -59,7 +59,7 @@ export function CreditRequestAmountInput(props) {
         <div className="col-12">
           <div className="form-group">
             <label htmlFor="">¿Cuánto necesitas?</label>
-            <input className="form-control" type="number" name="" id="" min="0" max="10000000" step="10000"
+            <input className="form-control" type="number" name="" id="" min="10000" max="10000000" step="10000"
               value={incrementAmount}
               onChange={e => dispatch(incrementByAmount(Number(incrementAmount) || 0))} />
           </div>
