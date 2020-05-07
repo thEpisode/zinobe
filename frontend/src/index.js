@@ -7,10 +7,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
 import 'nouislider/distribute/nouislider.min.css';
-import noUiSlider from 'nouislider/distribute/nouislider.min.js';
 
 ReactDOM.render(
   <React.StrictMode>
