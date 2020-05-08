@@ -2,12 +2,15 @@ import React from 'react';
 import { useForm } from 'react-hook-form'
 import { useHistory } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLoggedin } from './../../app/actions/user.action'
 
 export function Login () {
   const cookies = new Cookies();
   const { register, handleSubmit } = useForm();
   const history = useHistory();
   const date = new Date();
+  const dispatch = useDispatch();
 
   const loginOnClick = (data) => {
     const url = 'http://localhost:3500/api/login';
@@ -26,8 +29,10 @@ export function Login () {
           return
         }
 
+        dispatch(setLoggedin(true))
         cookies.set('user_session', response.result.token, { expires: new Date(response.result.payload.session_time), path: '/' });
         cookies.set('user_identity', response.result.payload.identity, { expires: new Date(response.result.payload.session_time), path: '/' });
+        cookies.set('credit_line', response.result.payload.creditLine, { expires: new Date(response.result.payload.session_time), path: '/' });
 
         history.push('/request-credit');
       });
