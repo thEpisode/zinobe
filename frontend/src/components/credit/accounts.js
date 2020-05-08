@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCount } from './../../features/credit/counterSlice';
 
 export function CreditRequestAccounts (props) {
   const count = useSelector(selectCount);
+  const [budget, setBudget] = useState([]);
 
   const round = (value, precision) => {
     if (isNaN(value)) {
@@ -39,10 +40,33 @@ export function CreditRequestAccounts (props) {
     return num
   }
 
+  useEffect(() => {
+    fetch('http://localhost:3500/api/bank/budget')
+      .then(res => res.json())
+      .then(
+        (response) => {
+          setBudget(response.budget);
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }, []);
+
   return (
     <div className="col-12 col-md-6">
       <h6 className="text-center">Nos gustan las cuentas claras, valores a pagar</h6>
 
+      <div className="card bg-light border-0">
+        <div className="card-body py-3">
+          <ul className="list-unstyled mb-0">
+            <li className="d-flex justify-content-center row">
+              <div className="col-6 text-right pr-3 font-weight-bold pl-3 text-dark"><span>Presupuesto del banco</span></div>
+              <div className="col-6 text-left pl-3"><span>${formatPrice(budget)}</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div className="card bg-gray-light border-0">
         <div className="card-body py-3">
           <ul className="list-unstyled mb-0">

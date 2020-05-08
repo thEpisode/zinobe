@@ -59,7 +59,7 @@ export class MyCredits extends React.Component {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => {
-        
+
         if (!response || !response.success) {
           alert(response.message || '')
           return
@@ -82,6 +82,7 @@ export class MyCredits extends React.Component {
     const url = 'http://localhost:3500/api/credit';
     var data = {
       id: creditId,
+      action: 'pay',
       status: { id: 3, name: 'payed', title: 'Pagado' }
     }
 

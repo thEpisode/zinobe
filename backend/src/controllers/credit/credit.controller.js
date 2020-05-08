@@ -5,7 +5,6 @@ function creditController (dependencies) {
   const _utilities = dependencies.utilities
   const _controllers = dependencies.controllers
   const _models = dependencies.models
-  const _functions = dependencies.functions
 
   const get = async (data) => {
     try {
@@ -88,6 +87,8 @@ function creditController (dependencies) {
 
   const create = async (data) => {
     try {
+      const _functions = dependencies.functions
+
       if (!data || !data.userId || !data.amount_requested) {
         return _utilities.response.error('Include at least a userId, please')
       }
@@ -146,6 +147,8 @@ function creditController (dependencies) {
 
   const update = async (data) => {
     try {
+      const _functions = dependencies.functions
+
       if (!data || !data.id) {
         return _utilities.response.error('Please provide an identity')
       }
@@ -162,6 +165,11 @@ function creditController (dependencies) {
       if (!docResponse) {
         _console.error(docResponse)
         return _utilities.response.error()
+      }
+
+      if (data.action && data.action === 'pay') {
+        const currentBudget = await _functions.cached.bank.bankBudget()
+        await _functions.cached.bank.bankBudget(Number(currentBudget) + Number(entity.get.amount_requested))
       }
 
       return _utilities.response.success(data)
