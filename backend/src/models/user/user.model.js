@@ -32,8 +32,7 @@ class UserModel extends baseModel {
     this.link_email_activation = { value: args.link_email_activation, type: dependencies.dal.types.string }
     this.accept_terms = { value: args.accept_terms, type: dependencies.dal.types.boolean }
     this.is_account_actived = { value: args.is_account_actived, type: dependencies.dal.types.boolean }
-    this.credit_id = { value: args.credit_id, type: dependencies.dal.types.string }
-    this.credit_line_status = { value: args.role || UserModel.creditLineStatuses.rejected, type: dependencies.dal.types.string }
+    this.credit_line_status = { value: args.credit_line_status || UserModel.creditLineStatuses.rejected, type: dependencies.dal.types.string }
   }
 
   // Return entity sanitized
@@ -50,7 +49,7 @@ class UserModel extends baseModel {
       is_account_actived: this.is_account_actived.value || this.is_account_actived.type.default,
       link_email_activation: this.link_email_activation.value || this.link_email_activation.type.default,
       accept_terms: this.accept_terms.value || this.accept_terms.type.default,
-      credit_id: this.credit_id || this.credit_id.type.default
+      credit_line_status: this.credit_line_status.value || this.credit_line_status.type.default
     }
   }
 
@@ -71,7 +70,7 @@ class UserModel extends baseModel {
       link_email_activation: this.link_email_activation.value || this.link_email_activation.type.default,
       accept_terms: this.accept_terms.value || this.accept_terms.type.default,
       password: this.password.value || this.password.type.default,
-      credit_id: this.credit_id || this.credit_id.type.default
+      credit_line_status: this.credit_line_status.value || this.credit_line_status.type.default
     }
   }
 }

@@ -175,6 +175,7 @@ function userController (dependencies) {
       const emailLinkToken = _auth.encoder.base64.encode(_auth.crypto.cypherObject(_controllers.backend.getKey(), { email: data.email }))
       data.confirmEmailLink = `${serverUri}?${timestampKey}=${timestamp}&${emailTokenKey}=${emailLinkToken}`
       data.password = _auth.hash.stringToHash(data.password || '')
+      data.credit_line_status = await _controllers.credit.evaluateRisk()
 
       const entity = new _models.User(data, dependencies)
       const docResponse = await docRef.set(entity.get)

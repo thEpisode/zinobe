@@ -114,11 +114,18 @@ function creditController (dependencies) {
     }
   }
 
+  const evaluateRisk = async (data) => {
+    const random = Math.round(Math.random())
+    const creditStatus = _models.User.creditLineStatuses[Object.keys(_models.User.creditLineStatuses)[random]]
+    return creditStatus
+  }
+
   return {
     getAll: get,
     getById,
     create,
     update,
+    evaluateRisk,
     status: _models.Credit.statuses,
     role: _models.Credit.roles
   }
