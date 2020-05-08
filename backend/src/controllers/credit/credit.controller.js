@@ -5,6 +5,7 @@ function creditController (dependencies) {
   const _utilities = dependencies.utilities
   const _controllers = dependencies.controllers
   const _models = dependencies.models
+  const _functions = dependencies.functions
 
   const get = async (data) => {
     try {
@@ -112,6 +113,16 @@ function creditController (dependencies) {
 
       if (userResponse.result.credit_line_status.name === _models.User.creditLineStatuses.rejected.name) {
         data.status = _models.Credit.statuses.rejected
+      } else {
+        // Calculate if bank have enough budget
+        const budget = await _functions.cached.bank.bankBudget()
+        const difference = budget - (+data.amount_requested)
+
+        if (difference < 0) {
+          return _utilities.response.error('No podemos emitir más créditos, tenemos que pedirle dinero a tio rico mac pato :(')
+        }
+
+        await _functions.cached.bank.bankBudget(difference)
       }
 
       data.user_id = data.userId
