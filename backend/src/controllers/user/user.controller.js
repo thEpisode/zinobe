@@ -14,9 +14,8 @@ function userController (dependencies) {
       const docRaw = await docRef.get()
       // Cast Firebase object into an arry of users
       const entityResponse = _firebase.cast.array(docRaw)
-      const entityCleaned = _utilities.response.clean(entityResponse)
 
-      return _utilities.response.success(entityCleaned.data)
+      return _utilities.response.success(entityResponse.data)
     } catch (error) {
       _console.error(error)
       return _utilities.response.error()
