@@ -17,7 +17,11 @@ const router = {
     // User
     { httpRoute: '/user/', route: '/routes/api/user/user.route', handler: 'get', method: 'GET', protected: false },
     { httpRoute: '/user/', route: '/routes/api/user/user.route', handler: 'create', method: 'POST', protected: false },
-    { httpRoute: '/user/', route: '/routes/api/user/user.route', handler: 'update', method: 'PATCH', protected: false }
+    { httpRoute: '/user/', route: '/routes/api/user/user.route', handler: 'update', method: 'PATCH', protected: false },
+    // Credit
+    { httpRoute: '/credit/', route: '/routes/api/credit/credit.route', handler: 'get', method: 'GET', protected: false },
+    { httpRoute: '/credit/', route: '/routes/api/credit/credit.route', handler: 'create', method: 'POST', protected: false },
+    { httpRoute: '/credit/', route: '/routes/api/credit/credit.route', handler: 'update', method: 'PATCH', protected: false }
   ],
   frontend: [
     { httpRoute: '/', route: '/routes/frontend/home/home.route', handler: 'index' },

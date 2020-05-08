@@ -15,7 +15,8 @@ function authController (dependencies) {
     const entity = new _models.User(user, dependencies)
     const sanitizedUser = entity.get
     const token = await _auth.token.create(sanitizedUser, {
-      identity: user.dni || user.phone || user.email
+      identity: user.id,
+      creditLine: user.credit_line_status || null
     })
 
     return _utilities.response.success(token)
