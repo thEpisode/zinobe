@@ -42,7 +42,7 @@ export function Login () {
 
     <div className="h-100">
       <div className="auth auth-img-bg pattern-bg h-100">
-        <div className="row flex-grow m-0 flex-nowrap h-100">
+        <div className="row flex-grow m-0 flex-md-nowrap h-100">
           <div className="col-lg-6 d-flex align-items-center justify-content-center">
             <div className="auth-form-light text-left p-4 shadow">
               <div className="brand-logo">

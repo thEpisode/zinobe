@@ -9,6 +9,10 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'nouislider/distribute/nouislider.min.css';
 
+import $ from 'jquery';
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

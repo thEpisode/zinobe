@@ -108,28 +108,30 @@ export class UserCreditLine extends React.Component {
           <div className="mt-5">
             <h2>Línea de crédito de {user.firstname} {user.lastname}</h2>
 
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Referencia de pago</th>
-                  <th scope="col">Valor solicitado</th>
-                  <th scope="col">Valor aprobado</th>
-                  <th scope="col">Fecha solicitud</th>
-                  <th scope="col">Estado</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map(item => (
-                  <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
-                    <td>$ {item.amount_requested}</td>
-                    <td>$ {item.amount}</td>
-                    <td>{new Date(+item.date_creation).toDateString()}</td>
-                    <td>{item.status.title}</td>
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Referencia de pago</th>
+                    <th scope="col">Valor solicitado</th>
+                    <th scope="col">Valor aprobado</th>
+                    <th scope="col">Fecha solicitud</th>
+                    <th scope="col">Estado</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {items.map(item => (
+                    <tr key={item.id}>
+                      <th scope="row">{item.id}</th>
+                      <td>$ {item.amount_requested}</td>
+                      <td>$ {item.amount}</td>
+                      <td>{new Date(+item.date_creation).toDateString()}</td>
+                      <td>{item.status.title}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       );

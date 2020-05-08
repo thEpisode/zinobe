@@ -120,26 +120,29 @@ export class DeniedCredits extends React.Component {
           <div className="mt-5">
             <h2>Créditos rechazados</h2>
 
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Referencia de crédito</th>
-                  <th scope="col">Referencia de usuario</th>
-                  <th scope="col">Valor solicitado</th>
-                  <th scope="col">Fecha solicitud</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map(item => (
-                  <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
-                    <td>{item.user_id}</td>
-                    <td>$ {item.amount_requested}</td>
-                    <td>{new Date(+item.date_creation).toDateString()}</td>
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Referencia de crédito</th>
+                    <th scope="col">Referencia de usuario</th>
+                    <th scope="col">Valor solicitado</th>
+                    <th scope="col">Fecha solicitud</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {items.map(item => (
+                    <tr key={item.id}>
+                      <th scope="row">{item.id}</th>
+                      <td>{item.user_id}</td>
+                      <td>$ {item.amount_requested}</td>
+                      <td>{new Date(+item.date_creation).toDateString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
       );
