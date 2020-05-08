@@ -21,7 +21,9 @@ const router = {
     // Credit
     { httpRoute: '/credit/', route: '/routes/api/credit/credit.route', handler: 'get', method: 'GET', protected: false },
     { httpRoute: '/credit/', route: '/routes/api/credit/credit.route', handler: 'create', method: 'POST', protected: false },
-    { httpRoute: '/credit/', route: '/routes/api/credit/credit.route', handler: 'update', method: 'PATCH', protected: false }
+    { httpRoute: '/credit/', route: '/routes/api/credit/credit.route', handler: 'update', method: 'PATCH', protected: false },
+    // Bank
+    { httpRoute: '/bank/budget', route: '/routes/api/bank/bank.route', handler: 'get', method: 'GET', protected: false }
   ],
   frontend: [
     { httpRoute: '/', route: '/routes/frontend/home/home.route', handler: 'index' },
