@@ -8,7 +8,7 @@ import {
 import noUiSlider from 'nouislider/distribute/nouislider.min.js';
 
 export function CreditRequestAmountInput(props) {
-  const standardValue = 500000;
+  const standardValue = 50000;
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState(standardValue);
@@ -18,12 +18,12 @@ export function CreditRequestAmountInput(props) {
     const softSlider = document.querySelector('#credit-slider')
     const settings = {
       start: [standardValue],
-      step: 10000,
+      step: 1000,
       tooltips: true,
       connect: true,
       range: {
         min: 0,
-        max: 1000000
+        max: 100000
       },
       format: {
         // 'to' the formatted value. Receives a number.
@@ -38,8 +38,8 @@ export function CreditRequestAmountInput(props) {
       },
       pips: {
         mode: 'values',
-        values: [0, 500000, 1000000],
-        density: 100000
+        values: [0, 50000, 100000],
+        density: 10000
       }
     }
 

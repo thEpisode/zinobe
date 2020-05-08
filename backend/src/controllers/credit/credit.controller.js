@@ -6,16 +6,25 @@ function creditController (dependencies) {
   const _controllers = dependencies.controllers
   const _models = dependencies.models
 
-  const get = async () => {
+  const get = async (data) => {
     try {
       // Get values from reference as snapshot
       const docRef = _db.collection('credits')
       const docRaw = await docRef.get()
       // Cast Firebase object into an arry of credits
       const entityResponse = _firebase.cast.array(docRaw)
-      const entityCleaned = _utilities.response.clean(entityResponse)
 
-      return _utilities.response.success(entityCleaned.data)
+      if (data.filterBy && data.filterBy.status) {
+        entityResponse.data = entityResponse.data
+          .filter(it => data
+            .filterBy
+            .status
+            .toLocaleLowerCase()
+            .trim()
+            .includes(it.status.name.toLocaleLowerCase().trim()))
+      }
+
+      return _utilities.response.success(entityResponse.data)
     } catch (error) {
       _console.error(error)
       return _utilities.response.error()
@@ -78,14 +87,27 @@ function creditController (dependencies) {
 
   const create = async (data) => {
     try {
-      if (!data || !data.userId) {
+      if (!data || !data.userId || !data.amount_requested) {
         return _utilities.response.error('Include at least a userId, please')
       }
 
+      if (+data.amount_requested < 10000 || +data.amount_requested > 100000) {
+        return _utilities.response.error('El monto mínimo a pedir es de $10.000 y el máximo es de $100.000')
+      }
+
+      const activeCreditsResponse = await getAllByUserId({ userId: data.userId, filterBy: { status: 'active' } })
       const userResponse = await _controllers.user.getById({ id: data.userId })
+
+      if (!_utilities.response.isValid(activeCreditsResponse)) {
+        return activeCreditsResponse
+      }
 
       if (!_utilities.response.isValid(userResponse)) {
         return userResponse
+      }
+
+      if (activeCreditsResponse.result && activeCreditsResponse.result.length) {
+        return _utilities.response.error('No puedes pedir más créditos, primero paga tu crédito actual')
       }
 
       if (userResponse.result.credit_line_status.name === _models.User.creditLineStatuses.rejected.name) {
