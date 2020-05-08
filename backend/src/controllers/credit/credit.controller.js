@@ -3,7 +3,6 @@ function creditController (dependencies) {
   const _console = dependencies.console
   const _firebase = dependencies.firebaseManager
   const _utilities = dependencies.utilities
-  const _auth = dependencies.auth
   const _controllers = dependencies.controllers
   const _models = dependencies.models
 
@@ -47,18 +46,41 @@ function creditController (dependencies) {
     }
   }
 
+  const getAllByUserId = async (data) => {
+    try {
+      if (!data || !data.userId) {
+        return _utilities.response.error('Please provide a userId')
+      }
+
+      // Get values from reference as snapshot
+      const docRef = _db.collection('credits')
+        .where('user_id', '==', `${data.userId}`)
+      const docRaw = await docRef.get()
+      // Cast Firebase object into an arry of users
+      const entityResponse = _firebase.cast.array(docRaw)
+
+      if (data.filterBy && data.filterBy.status) {
+        entityResponse.data = entityResponse.data
+          .filter(it => data
+            .filterBy
+            .status
+            .toLocaleLowerCase()
+            .trim()
+            .includes(it.status.name.toLocaleLowerCase().trim()))
+      }
+
+      return _utilities.response.success(entityResponse.data)
+    } catch (error) {
+      _console.error(error)
+      return _utilities.response.error()
+    }
+  }
+
   const create = async (data) => {
     try {
       // TODO: Check if user is blocked or not
       data.id = _utilities.idGenerator(15, 'cred-')
-      const timestamp = (new Date()).getTime() + ''
       const docRef = _db.collection('credits').doc(data.id)
-      const timestampKey = _auth.encoder.base64.encode('timestamp')
-      const serverUri = dependencies.config.FRONTEND_URI + dependencies.config.MAIL.VALIDATION_PATH
-      const emailTokenKey = _auth.encoder.base64.encode('token')
-      const emailLinkToken = _auth.encoder.base64.encode(_auth.crypto.cypherObject(_controllers.backend.getKey(), { email: data.email }))
-      data.confirmEmailLink = `${serverUri}?${timestampKey}=${timestamp}&${emailTokenKey}=${emailLinkToken}`
-      data.password = _auth.hash.stringToHash(data.password || '')
 
       const entity = new _models.Credit(data, dependencies)
       const docResponse = await docRef.set(entity.get)
@@ -89,7 +111,7 @@ function creditController (dependencies) {
 
   const update = async (data) => {
     try {
-      if (!data || !data.identity) {
+      if (!data || !data.id) {
         return _utilities.response.error('Please provide an identity')
       }
       const entityResponse = await getById(data)
@@ -123,6 +145,7 @@ function creditController (dependencies) {
   return {
     getAll: get,
     getById,
+    getAllByUserId,
     create,
     update,
     evaluateRisk,

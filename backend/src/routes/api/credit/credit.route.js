@@ -5,12 +5,14 @@ function route (dependencies) {
   const get = async (req, res) => {
     let result = {}
     const params = _utilities.request.getParameters(req)
-    const { id } = params
+    const { id, userId } = params
 
     if (id) {
-      result = await _controllers.user.getById(params)
+      result = await _controllers.credit.getById(params)
+    } else if (userId) {
+      result = await _controllers.credit.getAllByUserId(params)
     } else {
-      result = await _controllers.user.getAll(params)
+      result = await _controllers.credit.getAll(params)
     }
 
     res.json(result)
@@ -23,7 +25,7 @@ function route (dependencies) {
    */
   const create = async (req, res) => {
     const params = _utilities.request.getParameters(req)
-    const result = await _controllers.user.create(params)
+    const result = await _controllers.credit.create(params)
 
     res.json(result)
   }
@@ -35,7 +37,7 @@ function route (dependencies) {
      */
   const update = async (req, res) => {
     const params = _utilities.request.getParameters(req)
-    const result = await _controllers.user.update(params)
+    const result = await _controllers.credit.update(params)
 
     res.json(result)
   }

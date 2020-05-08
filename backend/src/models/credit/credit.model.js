@@ -20,7 +20,7 @@ class CreditModel extends baseModel {
     this.status = { value: args.status || CreditModel.statuses.active, type: dependencies.dal.types.object }
 
     /* Custom fields */
-    this.payment_deadline = { value: args.payment_deadline, type: dependencies.dal.types.date }
+    this.payment_deadline = { value: args.payment_deadline, type: dependencies.dal.types.string }
     this.amount_requested = { value: args.amount_requested, type: dependencies.dal.types.number }
     this.amount = { value: args.amount_requested, type: dependencies.dal.types.number }
     this.user_id = { value: args.user_id, type: dependencies.dal.types.string }
@@ -30,10 +30,10 @@ class CreditModel extends baseModel {
   get sanitized () {
     return {
       id: this.id.value || this.id.type.default,
-      payment_deadline: this.payment_deadline || this.payment_deadline.default,
-      amount_requested: this.amount_requested || this.amount_requested.default,
-      amount: this.amount || this.amount.default,
-      user_id: this.user_id || this.user_id.default
+      payment_deadline: this.payment_deadline.value || this.payment_deadline.type.default,
+      amount_requested: this.amount_requested.value || this.amount_requested.type.default,
+      amount: this.amount.value || this.amount.type.default,
+      user_id: this.user_id.value || this.user_id.type.default
     }
   }
 
@@ -44,10 +44,10 @@ class CreditModel extends baseModel {
       last_modification: this.last_modification.value || this.last_modification.type.default,
       last_user_modification: this.last_user_modification.value || this.last_user_modification.type.default,
       status: this.status.value || this.status.type.default,
-      payment_deadline: this.payment_deadline || this.payment_deadline.default,
-      amount_requested: this.amount_requested || this.amount_requested.default,
-      amount: this.amount || this.amount.default,
-      user_id: this.user_id || this.user_id.default
+      payment_deadline: this.payment_deadline.value || this.payment_deadline.type.default,
+      amount_requested: this.amount_requested.value || this.amount_requested.type.default,
+      amount: this.amount.value || this.amount.type.default,
+      user_id: this.user_id.value || this.user_id.type.default
     }
   }
 }
