@@ -30,6 +30,7 @@ class CreditModel extends baseModel {
   get sanitized () {
     return {
       id: this.id.value || this.id.type.default,
+      status: this.status.value || this.status.type.default,
       payment_deadline: this.payment_deadline.value || this.payment_deadline.type.default,
       amount_requested: this.amount_requested.value || this.amount_requested.type.default,
       amount: this.amount.value || this.amount.type.default,
@@ -57,6 +58,7 @@ CreditModel.statuses = {
   active: { id: 2, name: 'active', title: 'Activo' },
   payed: { id: 3, name: 'payed', title: 'Pagado' },
   inDefault: { id: 4, name: 'in-default', title: 'En Mora' },
+  rejected: { id: 5, name: 'rejected', title: 'Rechazado' },
   deleted: { id: 99, name: 'deleted', title: 'Eliminado' }
 }
 

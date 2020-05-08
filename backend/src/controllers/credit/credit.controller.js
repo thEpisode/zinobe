@@ -78,7 +78,21 @@ function creditController (dependencies) {
 
   const create = async (data) => {
     try {
-      // TODO: Check if user is blocked or not
+      if (!data || !data.userId) {
+        return _utilities.response.error('Include at least a userId, please')
+      }
+
+      const userResponse = await _controllers.user.getById({ id: data.userId })
+
+      if (!_utilities.response.isValid(userResponse)) {
+        return userResponse
+      }
+
+      if (userResponse.result.credit_line_status.name === _models.User.creditLineStatuses.rejected.name) {
+        data.status = _models.Credit.statuses.rejected
+      }
+
+      data.user_id = data.userId
       data.id = _utilities.idGenerator(15, 'cred-')
       const docRef = _db.collection('credits').doc(data.id)
 
@@ -88,18 +102,6 @@ function creditController (dependencies) {
       if (!docResponse) {
         _console.error(docResponse)
         return _utilities.response.error()
-      }
-
-      // Send a confirmation email
-      if (data.is_account_activated) {
-        _controllers.notification.create({
-          to: data.email,
-          notification_type: _controllers.notification.notification_type.email,
-          email: {
-            template: _controllers.notification.email_template.confirmEmail,
-            mainActionLink: data.confirmEmailLink
-          }
-        })
       }
 
       return _utilities.response.success(entity.sanitized)

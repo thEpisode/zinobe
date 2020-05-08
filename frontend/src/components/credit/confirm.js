@@ -22,18 +22,13 @@ export function CreditRequestConfirm (props) {
       return
     }
 
-    if (creditLine && creditLine.name === 'rejected') {
-      alert('Lo sentimos, no podemos prestarte dinero :(')
-      return
-    }
-
     createCredit();
   }
 
   const createCredit = () => {
     const url = 'http://localhost:3500/api/credit';
     const data = {
-      user_id: userId,
+      userId,
       amount_requested: amountRequested
     }
 
@@ -49,6 +44,11 @@ export function CreditRequestConfirm (props) {
       .then(response => {
         if (!response || !response.success) {
           alert(response.message)
+          return
+        }
+
+        if (response.result && response.result.status.name === 'rejected') {
+          alert('Lo sentimos, no podemos prestarte dinero :(')
           return
         }
 
