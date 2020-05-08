@@ -65,8 +65,8 @@ export function Signup () {
                     placeholder="Ingresa tu número telefónico" />
                 </div>
                 <div className="form-group col-12 mb-2 col-md-6">
-                  <label htmlFor="phone">Cédula</label>
-                  <input type="number" className="form-control" id="dni" name="dni" required
+                  <label htmlFor="dni">Cédula</label>
+                  <input type="text" className="form-control" id="dni" name="dni" required
                     ref={register}
                     placeholder="Ingresa tu número de cédula" />
                 </div>

@@ -10,7 +10,7 @@ export function CreditRequestConfirm (props) {
   const history = useHistory();
   const userId = cookies.get('user_identity');
   const creditLine = cookies.get('credit_line');
-  const jwt = cookies.get('user_session')
+  const jwt = cookies.get('user_session');
   const isLoggedin = useSelector(selectIsLoggedin);
   const amountRequested = useSelector(selectCount);
 
@@ -32,7 +32,7 @@ export function CreditRequestConfirm (props) {
 
   const createCredit = () => {
     const url = 'http://localhost:3500/api/credit';
-    var data = {
+    const data = {
       user_id: userId,
       amount_requested: amountRequested
     }
